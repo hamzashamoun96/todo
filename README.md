@@ -5,7 +5,7 @@ To Do List Manager Phase 2: Connecting the To Do Application to an external API 
 [Netlify](https://ham-todo.netlify.app/)<br>
 
 ## UML
-![uml](./reactUml.pn)
+![uml](./reactUml.png)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
