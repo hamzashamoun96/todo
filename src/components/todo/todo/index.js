@@ -43,7 +43,10 @@ const afterDelete = (deletedList)=>{
     ])
 
   },[])
-
+  useEffect(() => {
+    console.log('list change')
+    document.title = `To Do List ${list.filter((item) => !item.complete).length}`
+  },[list])
 
   return (
     <>
