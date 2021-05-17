@@ -1,6 +1,7 @@
 # todo
-To Do List Manager Phase 1: Begin the build of an application designed for creating and organizing a “To Do” list in your browser.<br>
-[Pull Request](https://github.com/hamzashamoun96/todo/pull/3)<br>
+To Do List Manager Phase 2: Connecting the To Do Application to an external API and Database.
+<br>
+[Pull Request](https://github.com/hamzashamoun96/todo/pull/6)<br>
 [Netlify](https://ham-todo.netlify.app/)<br>
 
 ## UML
