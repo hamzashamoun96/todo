@@ -3,54 +3,45 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import useForm from '../../../hooks/form';
 
 function TodoForm(props) {
   const [item,setItem] = useState({});
+  console.log(item)
+  const textControl = useForm('text','text','Add To Do List Item');
+  const difficultyControl = useForm('difficulty','range','' , 1 , 5 ,1);
+  const assigneeControl = useForm('assignee','text','Assigned To');
 
-  const handleInputChange = (e) => {
-    setItem({...item,[e.target.name]:e.target.value})
-  };
-  const handleSubmit = (e) => {
+  function submitHandler(e){
     e.preventDefault();
     e.target.reset();
-    props.handleSubmit(item);
+    let item = {
+      text :textControl.control.text,
+      difficulty:difficultyControl.defaultValue,
+      assignee:assigneeControl.control.assignee
+    }
+    props.handleSubmit(item)
     const item1 = {};
     setItem(item1)
-  };
+  }
 
   return (
     <>
       {/* <h3>Add Item</h3> */}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={submitHandler}>
         <fieldset>
       <legend>Add Item</legend>
         <Form.Label>
           <span>To Do Item</span>
-          <FormControl
-            name="text"
-            placeholder="Add To Do List Item"
-            onChange={handleInputChange}
-          />
+          <FormControl {...textControl}/>
         </Form.Label>
         <Form.Label>
           <span>Difficulty Rating</span>
-          <FormControl
-            defaultValue="1"
-            type="range"
-            min="1"
-            max="5"
-            name="difficulty"
-            onChange={handleInputChange}
-          />
+          <FormControl {...difficultyControl}/>
         </Form.Label>
         <Form.Label>
           <span>Assigned To</span>
-          <FormControl
-            type="text"
-            name="assignee"
-            placeholder="Assigned To"
-            onChange={handleInputChange}
-          />
+          <FormControl {...assigneeControl}/>
         </Form.Label>
         <Button type="submit">Add Item</Button>
         </fieldset>

@@ -67,7 +67,6 @@ const afterDelete = (deletedList)=>{
             list={list}
             handleComplete={toggleComplete}
             afterEdit = {afterEdit}
-            afterDelete = {afterDelete}
           />
         </div>
       </section>
