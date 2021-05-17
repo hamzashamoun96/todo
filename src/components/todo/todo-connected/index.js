@@ -1,74 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import TodoForm from '../form';
 import TodoList from '../list';
-
 import '../todo/todo.scss';
+import useAjax from '../../../hooks/ajax';
 
-const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
 
 
 const ToDo = () => {
+  const [list , _getTodoItems,_addItem , _toggleComplete , _delete , _edit] = useAjax()
 
-  const [list, setList] = useState([]);
-
-  const _addItem = (item) => {
-    item.due = new Date();
-    fetch(todoAPI, {
-      method: 'post',
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(item)
-    })
-      .then(response => response.json())
-      .then(savedItem => {
-        setList([...list, savedItem])
-      })
-      .catch(console.error);
-  };
-
-  const _toggleComplete = id => {
-
-    let item = list.filter(i => i._id === id)[0] || {};
-
-    if (item._id) {
-
-      item.complete = !item.complete;
-
-      let url = `${todoAPI}/${id}`;
-
-      fetch(url, {
-        method: 'put',
-        mode: 'cors',
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(item)
-      })
-        .then(response => response.json())
-        .then(savedItem => {
-          setList(list.map(listItem => listItem._id === item._id ? savedItem : listItem));
-        })
-        .catch(console.error);
-    }
-  };
-
-  const _getTodoItems = () => {
-    fetch(todoAPI, {
-      method: 'get',
-      mode: 'cors',
-    })
-      .then(data => data.json())
-      .then(data => setList(data.results))
-      .catch(console.error);
-  };
-
-  useEffect(_getTodoItems, []);
+useEffect(()=>{
+  _getTodoItems()
+},[]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
       <header>
         <h2>
-          There are {list.filter(item => !item.complete).length} Items To Complete
+          There are {list.filter(item => !item?.complete).length} Items To Complete
         </h2>
       </header>
 
@@ -82,6 +31,8 @@ const ToDo = () => {
           <TodoList
             list={list}
             handleComplete={_toggleComplete}
+            afterDelete = {_delete}
+            afterEdit = {_edit}
           />
         </div>
       </section>

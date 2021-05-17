@@ -69,7 +69,7 @@ body, html {
             margin: .75em .5em;
 
             &.complete-true {
-              span {
+              .card {
                 background: pink;
                 text-decoration:line-through;
                 &:hover {
@@ -95,9 +95,6 @@ body, html {
             button {
                 border:none;
                 cursor:pointer;
-                padding:0.5rem;
-                
-                margin: 0.5em;
             }
 
         }
