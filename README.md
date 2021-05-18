@@ -1,7 +1,7 @@
 # todo
-To Do List Manager Phase 2: Connecting the To Do Application to an external API and Database.
+To Do List Manager Phase 3: Add some configuration settings to the application
 <br>
-[Pull Request](https://github.com/hamzashamoun96/todo/pull/6)<br>
+[Pull Request](https://github.com/hamzashamoun96/todo/pull/7)<br>
 [Netlify](https://ham-todo.netlify.app/)<br>
 
 ## UML

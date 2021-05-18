@@ -7,7 +7,7 @@ import useForm from '../../../hooks/form';
 
 function TodoForm(props) {
   const [item,setItem] = useState({});
-  console.log(item)
+  // console.log(item)
   const textControl = useForm('text','text','Add To Do List Item');
   const difficultyControl = useForm('difficulty','range','' , 1 , 5 ,1);
   const assigneeControl = useForm('assignee','text','Assigned To');
