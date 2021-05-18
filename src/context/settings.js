@@ -7,7 +7,7 @@ function SettingsProv(props){
     const [sNum , setSnum] = useState(3);
     
     const state ={
-        list : list.sort((a,b)=>a.difficulty - b.difficulty),
+        list : list.sort((a,b)=>a?.difficulty - b?.difficulty),
         setList,
         page,
         setPage,
