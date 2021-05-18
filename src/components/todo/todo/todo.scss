@@ -99,4 +99,17 @@ body, html {
 
         }
     }
+    .comp{
+        background-color: red;
+        padding: 0.4rem;
+        border-radius: 15px;
+    }
+    .complete-true{
+        display: none;
+    }
+    .pending{
+        background-color: green;
+        padding: 0.4rem;
+        border-radius: 15px;
+    }
 }
