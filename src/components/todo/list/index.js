@@ -4,13 +4,15 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Card from 'react-bootstrap/Card';
 import {SettingsCon} from '../../../context/settings';
+import {If} from 'react-if';
+import { LogInContext } from '../../../context/acl';
 
 
 function TodoList (props){
 
 const pagesSetting = useContext(SettingsCon)
-
-
+const logging = useContext(LogInContext)
+console.log(logging.capabilities)
 const screenDispaly = (e) =>{
   pagesSetting.setSnum(parseInt(e.target.value));
   pagesSetting.setPage(parseInt(e.target.value));
@@ -86,7 +88,6 @@ const prevNext = (e) =>{
      <span> Screen Display</span>
       <FormControl onChange={screenDispaly} type="number" defaultValue="3"name="screenDis"/>
       </Form.Label>
-
     </Form>
 
     <button onClick={showTask}>Show Completed Tasks</button>
@@ -101,16 +102,21 @@ const prevNext = (e) =>{
       >
     
         <Card border="primary" style={{ width: '32.5rem' }} onClick={() => props.handleComplete(item?._id)}>
+        
         <Card.Header as="h5" style={{display:"flex",justifyContent:"space-between"}} >
           {item?.complete?<p className="comp">Completed</p>:<p className="pending">Pending</p>}
           {item?.assignee}
+          <If condition={logging.capabilities.includes('delete')}>
           <Button variant="secondary" id={item?._id} onClick={deleteItem}>x</Button>
+          </If>
         </Card.Header>
         <Card.Text as="h6">{item?.text}</Card.Text>
           <p>{item?.date}</p><br/>
           {item?.difficulty}<br/>
         </Card>
+        <If condition={logging.capabilities.includes('update')}>
           <Button onClick={showHide}>Edit</Button>
+        </If>
           <Form style={{ display: "none" }} onSubmit={edit}>
             <fieldset>
             <FormControl type="hidden" name="id" defaultValue={item?._id}/>

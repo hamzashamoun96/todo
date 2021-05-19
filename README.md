@@ -1,7 +1,8 @@
 # todo
-To Do List Manager Phase 3: Add some configuration settings to the application
+To Do List Manager Phase 4: Adding security and access controls to the application.
+
 <br>
-[Pull Request](https://github.com/hamzashamoun96/todo/pull/7)<br>
+[Pull Request](https://github.com/hamzashamoun96/todo/pull/9)<br>
 [Netlify](https://ham-todo.netlify.app/)<br>
 
 ## UML

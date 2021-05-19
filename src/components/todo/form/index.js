@@ -1,12 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import useForm from '../../../hooks/form';
+import {LogInContext} from '../../../context/acl';
+import {If} from 'react-if';
+
 
 function TodoForm(props) {
   const [item,setItem] = useState({});
+  const logging = useContext(LogInContext)
   // console.log(item)
   const textControl = useForm('text','text','Add To Do List Item');
   const difficultyControl = useForm('difficulty','range','' , 1 , 5 ,1);
@@ -28,6 +32,7 @@ function TodoForm(props) {
   return (
     <>
       {/* <h3>Add Item</h3> */}
+      <If condition={logging.capabilities.includes('create')}>
       <Form onSubmit={submitHandler}>
         <fieldset>
       <legend>Add Item</legend>
@@ -46,6 +51,7 @@ function TodoForm(props) {
         <Button type="submit">Add Item</Button>
         </fieldset>
       </Form>
+      </If>
     </>
   );
 }

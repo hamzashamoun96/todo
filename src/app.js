@@ -1,12 +1,12 @@
 import React from 'react';
-import ToDo from './components/todo/todo-connected';
+import Home from './components/home';
 import Header from './components/header';
 
 function App (){
   return (
     <>
     <Header/>
-    <ToDo/>
+    <Home/>
     </>
   );
 }
