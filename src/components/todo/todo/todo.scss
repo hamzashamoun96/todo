@@ -107,9 +107,49 @@ body, html {
     .complete-true{
         display: none;
     }
+ 
     .pending{
         background-color: green;
         padding: 0.4rem;
         border-radius: 15px;
     }
+  
+}
+#signUpForm{
+    width: 30%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 3% 0 0 0;
+    legend{
+        width: 30%;
+        font-weight: 500;
+    }
+    fieldset{
+        width: 100%;
+        margin: 0;
+        border: 3px solid rgb(131, 131, 131);
+        padding: 2rem;
+        display:flex;
+        flex-direction:column;
+        text-align: center;
+    }
+    span{
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 3%;
+    }
+    #select{
+        margin-bottom: 10%;
+    }
+}
+#logInForm{
+    display: flex;
+    margin-left: 42%;
+    width: 45%;
+    
+    input{
+        margin-right: 3%;
+    }
+
 }

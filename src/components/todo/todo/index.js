@@ -2,7 +2,6 @@ import React from "react";
 import TodoForm from "../form";
 import TodoList from "../list";
 import { useState, useEffect } from "react";
-import "../todo/todo.scss";
 
 function ToDo(props) {
 
